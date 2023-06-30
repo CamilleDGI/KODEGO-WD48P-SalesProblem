@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Profit and Loss Calculator</title>
+    <style>
+        body{
+            background-color: rgb(99, 226, 99);
+            font-family: Verdana;
+        }
+        .plcalculate{
+            text-align: center;
+            background-color: rgb(102, 155, 22);
+            width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 10px;
+        }
+        h2{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="plcalculate">
+        <h1>Profit and Loss Calculator</h1>
+  
+        <p>Cost Price(CP)   :
+            <input class="cost__price" type="number"  />
+        </p>
+  
+        <p>Selling Price(SP)   :
+            <input class="selling__price" type="number" />
+        </p>
+  
+        <button onclick="Calculate()">Calculate</button>
+  
+        <p>
+              <h2 class="profit__loss"></h2>
+            <h2 class="profit__loss__percentage"></h2>
+            <h2 class="nothing"></h2>
+        </p>
+    </div>
+  
+    <script>
+        function Calculate(){
+        const CP= document.querySelector(".cost__price").value;
+        const SP= document.querySelector(".selling__price").value;
+          
+        const profit__loss=document.querySelector(".profit__loss");
+        const percentage=document.querySelector(".profit__loss__percentage");
+        const nothing=document.querySelector(".nothing");
+  
+        profit__loss.innerHTML="";
+        percentage.innerHTML="";
+        nothing.innerHTML="";
+  
+        if(SP>CP){
+            const profit=SP - CP;
+            const profit_percent= ((profit/CP)*100).toFixed(2);
+  
+            profit__loss.innerHTML="Profit : "+ profit;
+            percentage.innerHTML="Profit Percentage : "+ profit_percent;
+        }
+        if(SP<CP){
+            const loss=CP - SP;
+            const loss_percent= ((loss/CP)*100).toFixed(2);
+  
+            profit__loss.innerHTML="Loss : "+ loss;
+            percentage.innerHTML="Loss Percentage : "+ loss_percent;
+        }
+        if(SP==CP){
+            nothing.innerHTML="No Profit No Loss";
+        }
+    }
+    </script>
+</body>
+</html>
